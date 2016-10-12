@@ -1,0 +1,113 @@
+﻿<header id="admin-header">
+    <div class="header-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <a class="logo" href="/">
+                        <img src="~/content/img/logo-invert.png" alt="Image Alternative text" title="Image Title" />
+                    </a>
+                </div>
+                <div class="col-md-3 col-md-offset-2">
+                    <form class="main-header-search">
+                        <div class="form-group form-group-icon-left">
+                            <i class="fa fa-search input-icon"></i>
+                            <input type="text" class="form-control">
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-4">
+                    <div class="top-user-area clearfix">
+                        <ul class="top-user-area-list list list-horizontal list-border">
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <li class="top-user-area-avatar">
+                                    <a href="user-profile.html">
+                                        <img class="origin round" src="~/content/img/40x40.png" alt="Image Alternative text" title="AMaze" />Hi, @User.Identity.Name
+                                    </a>
+                                </li>
+                            }
+                            <li>
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    using (Html.BeginForm("LogOff", "Account", new { area = "" }, FormMethod.Post, new { id = "fmLogOff" }))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                    }
+
+                                    <a href="#" onclick="ljavascript: document.getElementById('fmLogOff').submit()">
+                                        Sign Out
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a href="/account/login">Sign Up</a>
+                                }
+                            </li>
+                            <li class="nav-drop">
+                                <a href="#">USD $<i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a>
+                                <ul class="list nav-drop-menu">
+                                    <li>
+                                        <a href="#">EUR<span class="right">€</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#">GBP<span class="right">£</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#">JPY<span class="right">円</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#">CAD<span class="right">$</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#">AUD<span class="right">A$</span></a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li class="top-user-area-lang nav-drop">
+                                <a href="#">
+                                    <img src="~/content/img/flags/32/uk.png" alt="Image Alternative text" title="Image Title" />ENG<i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i>
+                                </a>
+                                <ul class="list nav-drop-menu">
+                                    <a href="/cultures/ChangeLanguage?language=en">
+                                        <img src="~/content/img/flags/32/uk.png" alt="Image Alternative text" title="Image Title" />ENG<i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i>
+                                    </a>
+                                    <li>
+                                        <a title="German" href="/cultures/changeLanguage?language=ger">
+                                            <img src="~/content/img/flags/32/de.png" alt="Image Alternative text" title="Image Title" /><span class="right">GER</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a title="Japanise" href="#">
+                                            <img src="~/content/img/flags/32/jp.png" alt="Image Alternative text" title="Image Title" /><span class="right">JAP</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a title="Italian" href="#">
+                                            <img src="~/content/img/flags/32/it.png" alt="Image Alternative text" title="Image Title" /><span class="right">ITA</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a title="French" href="#">
+                                            <img src="~/content/img/flags/32/fr.png" alt="Image Alternative text" title="Image Title" /><span class="right">FRE</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a title="Russian" href="#">
+                                            <img src="~/content/img/flags/32/ru.png" alt="Image Alternative text" title="Image Title" /><span class="right">RUS</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a title="Korean" href="#">
+                                            <img src="~/content/img/flags/32/kr.png" alt="Image Alternative text" title="Image Title" /><span class="right">KOR</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

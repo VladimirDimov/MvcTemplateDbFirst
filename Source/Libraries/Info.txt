@@ -1,0 +1,5 @@
+All libraries shall be used through an interface provider placed in this folder.
+
+Example:
+=============================================================================
+"IO.Swagger" is used in the services through an interface "IFlightsProvider".

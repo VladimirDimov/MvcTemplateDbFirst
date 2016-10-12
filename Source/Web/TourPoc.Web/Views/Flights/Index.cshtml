@@ -1,0 +1,466 @@
+@model TourPoc.Web.ViewModels.Flights.IndexViewModel
+
+@{
+    ViewBag.Title = "Flights";
+    var numberOfAdults = Model.AffiliateFlightsSearchModel.Adults ?? 1;
+    var adultPluralOrSingle = string.Format("adult{0}", numberOfAdults == 1 ? string.Empty : "s");
+    var airlines = Model.Airlines;
+    decimal ticketMaxPrice = Model.BookingListViewModel.Segments.Count() != 0 ? Model.BookingListViewModel.Segments.Max(x => x.TotalPrice) : 0;
+}
+
+<div class="container">
+    <ul class="breadcrumb">
+        <li>
+            <a href="index.html">Home</a>
+        </li>
+        <li>
+            <a href="#">United States</a>
+        </li>
+        <li>
+            <a href="#">New York (NY)</a>
+        </li>
+        <li>
+            <a href="#">New York City</a>
+        </li>
+        <li class="active">New York City Flights</li>
+    </ul>
+
+    @Html.Partial("_ChangeSearch", Model.AffiliateFlightsSearchModel)
+
+    <h3 class="booking-title">@Model.BookingListViewModel.Segments.Count() Flights from @Model.Airports.OriginAirportName to @Model.Airports.DestinationAirportName on @Model.AffiliateFlightsSearchModel.DepartureDate.ToString("MMM dd") for @numberOfAdults @adultPluralOrSingle <small><a class="popup-text" href="#search-dialog" data-effect="mfp-zoom-out">Change search</a></small></h3>
+
+    <div class="row">
+        <div class="col-md-3">
+            <aside class="booking-filters text-white">
+                <h3>Filter By:</h3>
+                <ul class="list booking-filters-list">
+                    <li id="stopsCheckboxList">
+                        <h5 class="booking-filters-title">Stops <small>Price from</small></h5>
+                        <div class="checkbox" id="checkbox-nonstop">
+                            <label>
+                                <input class="i-check" type="checkbox" />Non-stop<span class="pull-right">$@Model.MinPrices.NonStopMinValue</span>
+                            </label>
+                        </div>
+                        <div class="checkbox" id="checkbox-onestop">
+                            <label>
+                                <input class="i-check" type="checkbox" />1 Stop<span class="pull-right">$@Model.MinPrices.OneStopMinValue</span>
+                            </label>
+                        </div>
+                        <div class="checkbox" id="checkbox-manystops">
+                            <label>
+                                <input class="i-check" type="checkbox" />2+ Stops<span class="pull-right">$@Model.MinPrices.ManyStopsMinValue</span>
+                            </label>
+                        </div>
+                    </li>
+                    <li>
+                        <h5 class="booking-filters-title">Price </h5>
+                        <input data-search="priceSlider" type="text" id="price-slider" value="" />
+                    </li>
+                    <li id="flightClassCheckboxList">
+                        <h5 class="booking-filters-title">Flight Class <small>Price from</small></h5>
+                        <div class="checkbox" id="checkbox-economy">
+                            <label>
+                                <input class="i-check" type="checkbox" />Economy<span class="pull-right">$154</span>
+                            </label>
+                        </div>
+                        <div class="checkbox" id="checkbox-business">
+                            <label>
+                                <input class="i-check" type="checkbox" />Business<span class="pull-right">$316</span>
+                            </label>
+                        </div>
+                        <div class="checkbox" id="checkbox-first">
+                            <label>
+                                <input class="i-check" type="checkbox" />First<span class="pull-right">$450</span>
+                            </label>
+                        </div>
+                    </li>
+                    <li id="airlinesFilters">
+                        <h5 class="booking-filters-title">Airlines <small>Price from</small></h5>
+                        @foreach (var airline in airlines)
+                        {
+                            <div class="checkbox">
+                                <label>
+                                    <input class="i-check" type="checkbox" /><span class="airlineName">@airline.Name</span><span class="pull-right">$@airline.MinPrice</span>
+                                </label>
+                            </div>
+                        }
+                    </li>
+                    <li id="departureTimeFilters">
+                        <h5 class="booking-filters-title">Departure Time</h5>
+                        <div class="checkbox" data-departureTime="0">
+                            <label>
+                                <input class="i-check" type="checkbox" />Morning (5:00a - 11:59a)
+                            </label>
+                        </div>
+                        <div class="checkbox" data-departureTime="1">
+                            <label>
+                                <input class="i-check" type="checkbox" />Afternoon (12:00p - 5:59p)
+                            </label>
+                        </div>
+                        <div class="checkbox" data-departureTime="2">
+                            <label>
+                                <input class="i-check" type="checkbox" />Evening (6:00p - 11:59p)
+                            </label>
+                        </div>
+                    </li>
+                </ul>
+            </aside>
+        </div>
+        <div class="col-md-9">
+            <div class="nav-drop booking-sort">
+                <h5 class="booking-sort-title"><a href="#">Sort: Sort: Price (low to high)<i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a></h5>
+                <ul class="nav-drop-menu">
+                    <li>
+                        <a href="#" onclick="orderByProviders.orderByPrice()">Price (high to low)</a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="orderByProviders.orderByDuration()">Duration</a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="orderByProviders.orderByStops()">Stops</a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="orderByProviders.orderByArrival()">Arrival</a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="orderByProviders.orderByDeparture()">Departure</a>
+                    </li>
+                </ul>
+            </div>
+            <ul class="booking-list">
+                @Html.Partial("_BookingListItem", Model.BookingListViewModel)
+            </ul>
+            <p class="text-right">
+                Not what you're looking for? <a class="popup-text" href="#search-dialog" data-effect="mfp-zoom-out">Try your search again</a>
+            </p>
+        </div>
+    </div>
+    <div class="gap"></div>
+</div>
+
+@section Scripts {
+    <script src="~/scripts/custom/watchAttribute.js"></script>
+
+    <script>
+        var $listItems = $('ul.booking-list>li');
+
+        var filters = (function setUpFilters() {
+            var filterValues = {
+                maxPrice: 99999999,
+                includeNoStop: true,
+                includeOneStop: true,
+                includeManyStops: true,
+                includeEconomy: true,
+                includeBusiness: true,
+                includeFirst: true,
+                includeAirlines: [],
+                includeDepartureTimes: ["0", "1", "2"]
+            };
+
+            var filtersCollection = [];
+
+            allFilters = {
+                maxPriceFilter: function ($el) {
+                    var price = Number.parseFloat($el.attr('data-price'));
+
+                    return price <= Number.parseFloat(filterValues.maxPrice);
+                },
+
+                noStopFilter: function ($el) {
+                    var isNoStop = $el.attr('data-stops') == 0;
+                    if (isNoStop) {
+                        return filterValues.includeNoStop;
+                    }
+
+                    return true;
+                },
+
+                manyStopsFilter: function ($el) {
+                    var isManyStops = $el.attr('data-stops') > 1;
+                    if (isManyStops) {
+                        return filterValues.includeManyStops;
+                    }
+
+                    return true;
+                },
+
+                oneStopFilter: function ($el) {
+                    var isOneStop = $el.attr('data-stops') == 1;
+                    if (isOneStop) {
+                        return filterValues.includeOneStop;
+                    }
+
+                    return true;
+                },
+
+                includeEconomy: function ($el) {
+                    var isEconomy = $el.attr('data-travelClass').toUpperCase() == 'ECONOMY';
+                    if (isEconomy) {
+                        return filterValues.includeEconomy;
+                    }
+
+                    return true;
+                },
+
+                includeBusiness: function ($el) {
+                    var isBusiness = $el.attr('data-travelClass').toUpperCase() == 'BUSINESS';
+                    if (isBusiness) {
+                        return filterValues.includeBusiness;
+                    }
+
+                    return true;
+                },
+
+                includeFirst: function ($el) {
+                    var isFirst = $el.attr('data-travelClass').toUpperCase() == 'FIRST';
+                    if (isFirst) {
+                        return filterValues.includeFirst;
+                    }
+
+                    return true;
+                },
+
+                airlinesFilter: function ($el) {
+                    var currentAirline = $el.attr('data-airline');
+                    if (filterValues.includeAirlines.indexOf(currentAirline) === -1) {
+                        return false;
+                    }
+
+                    return true;
+                },
+
+                departureTimeFilter: function ($el) {
+                    var currentDepartureTimeEnum = $el.attr('data-departureTime');
+                    if (filterValues.includeDepartureTimes.indexOf(currentDepartureTimeEnum) !== -1) {
+                        return true;
+                    }
+
+                    return false;
+                }
+            };
+
+            for (var functionName in allFilters) {
+                filtersCollection.push(allFilters[functionName]);
+            }
+
+            function updateFilters() {
+                Array.prototype.forEach.call($listItems, function (el) {
+                    var $el = $(el);
+                    var isDisplay = true;
+                    filtersCollection.forEach(function (filter) {
+                        if (!filter($el)) {
+                            isDisplay = false;
+                            return;
+                        }
+                    });
+
+                    $el.css('display', isDisplay ? 'block' : 'none');
+                });
+            }
+
+            return {
+                filterValues: filterValues,
+                updateFilters: updateFilters,
+            }
+        })();
+
+        attributeWatcher.watchAttribute(
+            $('[data-search=priceSlider]'),
+            function ($elem) {
+                return $elem.prop('value');
+            },
+            function (data) {
+                var prices = data['data-search'].split(';');
+                filters.filterValues.maxPrice = prices[1];
+                filters.updateFilters();
+            });
+
+        attributeWatcher.watchAttribute(
+            $('#checkbox-nonstop'),
+            function ($elem) {
+                return $elem.find('.i-check').hasClass('checked');
+            },
+            function (data) {
+                var includeNoStop = data['data-search'];
+                filters.filterValues.includeNoStop = includeNoStop;
+                filters.updateFilters();
+            });
+
+        attributeWatcher.watchAttribute(
+            $('#checkbox-onestop'),
+            function ($elem) {
+                return $elem.find('.i-check').hasClass('checked');
+            },
+            function (data) {
+                var includeOneStop = data['data-search'];
+                filters.filterValues.includeOneStop = includeOneStop;
+                filters.updateFilters();
+            });
+
+        attributeWatcher.watchAttribute(
+            $('#checkbox-manystops'),
+            function ($elem) {
+                return $elem.find('.i-check').hasClass('checked');
+            },
+            function (data) {
+                var includeManyStops = data['data-search'];
+                filters.filterValues.includeManyStops = includeManyStops;
+                filters.updateFilters();
+            });
+
+        attributeWatcher.watchAttribute(
+            $('#checkbox-economy'),
+            function ($elem) {
+                return $elem.find('.i-check').hasClass('checked');
+            },
+            function (data) {
+                var includeEconomy = data['data-search'];
+                filters.filterValues.includeEconomy = includeEconomy;
+                filters.updateFilters();
+            });
+
+        attributeWatcher.watchAttribute(
+            $('#checkbox-business'),
+            function ($elem) {
+                return $elem.find('.i-check').hasClass('checked');
+            },
+            function (data) {
+                var includeBusiness = data['data-search'];
+                filters.filterValues.includeBusiness = includeBusiness;
+                filters.updateFilters();
+            });
+
+        attributeWatcher.watchAttribute(
+            $('#checkbox-first'),
+            function ($elem) {
+                return $elem.find('.i-check').hasClass('checked');
+            },
+            function (data) {
+                var includeFirst = data['data-search'];
+                filters.filterValues.includeFirst = includeFirst;
+                filters.updateFilters();
+            });
+
+        attributeWatcher.watchAttribute(
+            $('#departureTimeFilters'),
+            function ($elem) {
+                var numberOfChecked = $elem.find('.i-check.checked').length;
+                return numberOfChecked;
+            },
+            function (data) {
+                var $departureTimeCheckboxes = $('#departureTimeFilters .i-check.checked');
+                var checkedDepartureTimes = [];
+                Array.prototype.forEach.call($departureTimeCheckboxes, function (el) {
+                    var $el = $(el);
+                    checkedDepartureTimes.push($el.parent().parent().attr('data-departureTime'));
+                });
+
+                filters.filterValues.includeDepartureTimes = checkedDepartureTimes;
+                filters.updateFilters();
+            });
+
+        attributeWatcher.watchAttribute(
+            $('#airlinesFilters'),
+            function ($el) {
+                var checked = $el.find('.i-check.checked');
+
+                return checked.length;
+            },
+            function (data) {
+                var checkedAirlineContainers = $('#airlinesFilters .i-check.checked');
+                var checkedAirlines = [];
+
+                for (var i = 0, length = checkedAirlineContainers.length; i < length; i++) {
+                    var airlineName = $(checkedAirlineContainers[i]).parent().find('.airlineName').first().html();
+                    checkedAirlines.push(airlineName);
+                }
+
+                filters.filterValues.includeAirlines = checkedAirlines;
+                filters.updateFilters();
+            });
+
+        function getFormattedDate(date) {
+            var curr_date = date.getDate();
+            var curr_month = date.getMonth() + 1; //Months are zero based
+            var curr_year = date.getFullYear();
+            return curr_date + "-" + curr_month + "-" + curr_year;
+        }
+
+        (function setDefaultValues() {
+            $('#stopsCheckboxList .i-check input').iCheck('check');
+            $('#flightClassCheckboxList .i-check input').iCheck('check');
+            $('#airlinesFilters .checkbox').iCheck('check');
+
+            $("#price-slider").ionRangeSlider({
+                min: 0,
+                max: Math.ceil(@ticketMaxPrice),
+                type: 'double',
+                prefix: "$",
+                prettify: false,
+                hasGrid: true
+            });
+
+            $('.irs-slider.from.last').prop("disabled", true);
+
+            $('#departureTimeFilters .i-check').iCheck('check');
+        })();
+
+        var orderByProviders = (function () {
+            var $bookingList = $('ul.booking-list');
+            var $listItems = $bookingList.children('li');
+
+            return {
+                orderByStops: function () {
+                    orderByAbstract(function (a, b) {
+                        var aStops = parseFloat($(a).attr('data-stops'));
+                        var bStops = parseFloat($(b).attr('data-stops'));
+
+                        return aStops - bStops;
+                    });
+                },
+
+                orderByPrice: function () {
+                    orderByAbstract(function (a, b) {
+                        var aPrice = parseFloat($(a).attr('data-price'));
+                        var bPrice = parseFloat($(b).attr('data-price'));
+
+                        return aPrice - bPrice;
+                    });
+                },
+
+                orderByArrival: function () {
+                    orderByAbstract(function (a, b) {
+                        var aArrivesAt = parseFloat($(a).attr('data-arrivesAt'));
+                        var bArrivesAt = parseFloat($(b).attr('data-arrivesAt'));
+
+                        return aArrivesAt - bArrivesAt;
+                    });
+                },
+
+                orderByDeparture: function () {
+                    orderByAbstract(function (a, b) {
+                        var aDepartsAt = parseFloat($(a).attr('data-departsAt'));
+                        var bDepartsAt = parseFloat($(b).attr('data-departsAt'));
+
+                        return aDepartsAt - bDepartsAt;
+                    });
+                },
+
+                orderByDuration: function () {
+                    orderByAbstract(function (a, b) {
+                        var aDuration = parseFloat($(a).attr('data-DurationInMinutes'));
+                        var bDuration = parseFloat($(b).attr('data-DurationInMinutes'));
+
+                        return aDuration - bDuration;
+                    });
+                }
+            };
+
+            function orderByAbstract(orderFunction) {
+                $listItems.detach().sort(orderFunction);
+                $bookingList.append($listItems);
+            }
+        })();
+
+    </script>
+}

@@ -1,0 +1,170 @@
+<div class="container">
+    <h1 class="page-title">Search for Flights</h1>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            @Html.Partial("_SearchFlightForm")
+        </div>
+        <div class="col-md-9">
+            <h3 class="mb20">Popular Flight Destinations</h3>
+            <div class="row row-wrap">
+                <div class="col-md-4">
+                    <div class="thumb">
+                        <a class="hover-img" href="#">
+                            <img src="img/800x600.png" alt="Image Alternative text" title="lack of blue depresses me" />
+                            <div class="hover-inner hover-inner-block hover-inner-bottom hover-inner-bg-black hover-hold">
+                                <div class="text-small">
+                                    <h5>Miami Hotels</h5>
+                                    <p>58451 reviews</p>
+                                    <p class="mb0">423 offers from $74</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="thumb">
+                        <a class="hover-img" href="#">
+                            <img src="img/800x600.png" alt="Image Alternative text" title="new york at an angle" />
+                            <div class="hover-inner hover-inner-block hover-inner-bottom hover-inner-bg-black hover-hold">
+                                <div class="text-small">
+                                    <h5>Boston</h5>
+                                    <p>55214 reviews</p>
+                                    <p class="mb0">627 offers from $55</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="thumb">
+                        <a class="hover-img" href="#">
+                            <img src="img/800x600.png" alt="Image Alternative text" title="Street" />
+                            <div class="hover-inner hover-inner-block hover-inner-bottom hover-inner-bg-black hover-hold">
+                                <div class="text-small">
+                                    <h5>Disney World Hotels</h5>
+                                    <p>75937 reviews</p>
+                                    <p class="mb0">276 offers from $55</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="thumb">
+                        <a class="hover-img" href="#">
+                            <img src="img/800x600.png" alt="Image Alternative text" title="196_365" />
+                            <div class="hover-inner hover-inner-block hover-inner-bottom hover-inner-bg-black hover-hold">
+                                <div class="text-small">
+                                    <h5>Paris</h5>
+                                    <p>77065 reviews</p>
+                                    <p class="mb0">770 offers from $66</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="thumb">
+                        <a class="hover-img" href="#">
+                            <img src="img/800x600.png" alt="Image Alternative text" title="the best mode of transport here in maldives" />
+                            <div class="hover-inner hover-inner-block hover-inner-bottom hover-inner-bg-black hover-hold">
+                                <div class="text-small">
+                                    <h5>Virginia Beach Hotels</h5>
+                                    <p>78890 reviews</p>
+                                    <p class="mb0">795 offers from $72</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="thumb">
+                        <a class="hover-img" href="#">
+                            <img src="img/800x600.png" alt="Image Alternative text" title="Viva Las Vegas" />
+                            <div class="hover-inner hover-inner-block hover-inner-bottom hover-inner-bg-black hover-hold">
+                                <div class="text-small">
+                                    <h5>Las Vegas</h5>
+                                    <p>69680 reviews</p>
+                                    <p class="mb0">920 offers from $79</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="thumb">
+                        <a class="hover-img" href="#">
+                            <img src="img/800x600.png" alt="Image Alternative text" title="waipio valley" />
+                            <div class="hover-inner hover-inner-block hover-inner-bottom hover-inner-bg-black hover-hold">
+                                <div class="text-small">
+                                    <h5>Sydney Hotels</h5>
+                                    <p>65769 reviews</p>
+                                    <p class="mb0">830 offers from $51</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="thumb">
+                        <a class="hover-img" href="#">
+                            <img src="img/800x600.png" alt="Image Alternative text" title="Gaviota en el Top" />
+                            <div class="hover-inner hover-inner-block hover-inner-bottom hover-inner-bg-black hover-hold">
+                                <div class="text-small">
+                                    <h5>New York City Hotels</h5>
+                                    <p>65314 reviews</p>
+                                    <p class="mb0">939 offers from $65</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="thumb">
+                        <a class="hover-img" href="#">
+                            <img src="img/800x600.png" alt="Image Alternative text" title="El inevitable paso del tiempo" />
+                            <div class="hover-inner hover-inner-block hover-inner-bottom hover-inner-bg-black hover-hold">
+                                <div class="text-small">
+                                    <h5>Budapest</h5>
+                                    <p>61444 reviews</p>
+                                    <p class="mb0">728 offers from $65</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="gap"></div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/scripts/custom/watchAttribute.js"></script>
+    <script src="~/scripts/custom/validator.js"></script>
+    <script>
+        var $numberOfPassengersContainers = $('#numberOfPassengers');
+        attributeWatcher.watchAttribute(
+            $numberOfPassengersContainers,
+            function ($el) {
+                var $activeLabel = $el.find('.active');
+                var val = $activeLabel.contents().filter(function () {
+                    return this.nodeType == 3;
+                }).text().trim();
+
+                return val;
+            },
+            function (data) {
+                var numberOfPassengers = Number.parseInt(data['data-search']);
+                updateNumberOfPassengers(numberOfPassengers);
+            });
+
+        function updateNumberOfPassengers(numberOfPassengers) {
+            validator.ValidateMustBeAPositiveNumber(numberOfPassengers);
+
+            $('#Adults').val(numberOfPassengers);
+        }
+    </script>
+}

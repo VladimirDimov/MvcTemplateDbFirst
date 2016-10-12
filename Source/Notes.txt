@@ -1,0 +1,1 @@
+NOTE: All dateTime pickers for range picking must have an attribute date-start or date-end for the javascript processing to work.

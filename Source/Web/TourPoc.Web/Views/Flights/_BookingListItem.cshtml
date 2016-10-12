@@ -1,0 +1,106 @@
+﻿@model TourPoc.Web.ViewModels.Flights.SegmentListViewModel
+
+@foreach (var booking in Model.Segments)
+{
+    var stops = booking.Flights.Skip(1);
+    var numberOfStops = stops.Count();
+    string stopsText = numberOfStops == 0 ? "no stop" :
+                    (numberOfStops == 1 ? "1 stop" : numberOfStops + " stops");
+
+    // Set departure time enum (morning - 0; afernoon - 1; evening - 2)
+    int? departureTime = null;
+    var firstFlight = booking.Flights.First();
+    var departHour = firstFlight.DepartsAt.Hour;
+    if (5 <= departHour && departHour < 12)
+    {
+        departureTime = 0;
+    }
+    else if (12 <= departHour && departHour < 18)
+    {
+        departureTime = 1;
+    }
+    else
+    {
+        departureTime = 2;
+    }
+
+    var durationMinutes = booking.DurationHours * 60 + booking.DurationMinutes;
+
+    string adultsSingleOrPlural = Model.AdulstNumber == 1 ? "adult" : "adults";
+
+    <li data-stops="@numberOfStops"
+        data-travelClass="@booking.Flights.First().TravelClass"
+        data-price="@booking.TotalPrice"
+        data-airline="@booking.Airline"
+        data-departsAt="@firstFlight.DepartsAt"
+        data-arrivesAt="@booking.Flights.Last().ArrivesAt"
+        data-DurationInMinutes="@durationMinutes"
+        data-DepartureTime="@departureTime">
+
+        <div class="booking-item-container">
+            <div class="booking-item">
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="booking-item-airline-logo">
+                            <img src="@booking.LogoSmall" alt="Image Alternative text" title="Image Title">
+                            <p>@booking.Airline</p>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="booking-item-flight-details">
+                            <div class="booking-item-departure">
+                                <i class="fa fa-plane"></i>
+                                <h5>@booking.Flights.First().DepartsAt.ToString("t")</h5>
+                                <p class="booking-item-date">@booking.Flights.First().DepartsAt.ToString("ddd, MMM M")</p>
+                                <p class="booking-item-destination">@booking.Flights.First().OriginName (@booking.Flights.First().OriginCodeName)</p>
+                            </div>
+                            <div class="booking-item-arrival">
+                                <i class="fa fa-plane fa-flip-vertical"></i>
+                                <h5>@booking.Flights.Last().ArrivesAt.ToString("t")</h5>
+                                <p class="booking-item-date">@booking.Flights.Last().ArrivesAt.ToString("ddd, MMM M")</p>
+                                <p class="booking-item-destination">@booking.Flights.Last().DestinationName (@booking.Flights.Last().DestinationCodeName)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <h5>@string.Format("{0}h {1}m", booking.DurationHours, booking.DurationMinutes)</h5>
+                        <p>@stopsText</p>
+                    </div>
+                    <div class="col-md-3">
+                        <span class="booking-item-price">@string.Format("{0}{1}", booking.CurrencySymbol, booking.TotalPrice)</span><span>/@Model.AdulstNumber @adultsSingleOrPlural</span>
+                        <p class="booking-item-flight-class">Class: @booking.Flights.First().TravelClass</p><a class="btn btn-primary" href="#">Select</a>
+                    </div>
+                </div>
+            </div>
+            <div class="booking-item-details">
+                <div class="row">
+                    <div class="col-md-8">
+                        <p>Flight Details</p>
+                        <h5 class="list-title">@booking.Flights.First().OriginName (@booking.Flights.First().OriginCodeName) to @booking.Flights.Last().DestinationName (@booking.Flights.Last().DestinationCodeName)</h5>
+                        <ul class="list">
+                            <li>@booking.Airline</li>
+                            <li>@booking.Flights.First().TravelClass / Coach Class ( M), AIRBUS INDUSTRIE A330-300</li>
+                            <li>Depart @booking.Flights.First().DepartsAt.ToString("HH:mm") Arrive @booking.Flights.Last().ArrivesAt.ToString("HH:mm")</li>
+                            <li>Duration: @string.Format("{0}h {1}m", booking.DurationHours, booking.DurationMinutes)</li>
+                        </ul>
+                        @if (stops.Any())
+                        {
+                            foreach (var stop in stops)
+                            {
+                                <h5>Stopover: @stop.OriginName (@stop.OriginCodeName) 1h 55m</h5>
+                                    <h5 class="list-title">@stop.OriginName (@stop.OriginCodeName) to @stop.DestinationName (@stop.DestinationCodeName)</h5>
+                                    <ul class="list">
+                                        <li>@booking.Airline</li>
+                                        <li>@stop.TravelClass / Coach Class ( M), Airbus A321</li>
+                                        <li>Depart @stop.DepartsAt.ToString("HH:mm") Arrive @stop.ArrivesAt.ToString("HH:mm")</li>
+                                        <li>Duration: @string.Format("{0}h {1}m", @stop.Duration.Hours, @stop.Duration.Minutes)</li>
+                                    </ul>
+                            }
+                        }
+                        <p>Total trip time: @string.Format("{0}h {1}m", booking.DurationHours, booking.DurationMinutes)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+}

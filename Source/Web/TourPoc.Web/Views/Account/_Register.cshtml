@@ -1,0 +1,33 @@
+﻿@model TourPoc.Web.ViewModels.Account.RegisterViewModel
+
+<form action="/account/register" method="post">
+    @Html.AntiForgeryToken()
+    @*<div class="form-group form-group-icon-left">
+        <i class="fa fa-user input-icon input-icon-show"></i>
+        <label>Full Name</label>
+        <input class="form-control" placeholder="e.g. John Doe" type="text" />
+    </div>*@
+
+    <div class="form-group form-group-icon-left">
+        <i class="fa fa-envelope input-icon input-icon-show"></i>
+        <label>Emai</label>
+        @*<input name="@Html.NameFor(m => m.Email)" class="form-control" placeholder="e.g. johndoe@gmail.com" type="text" />*@
+        @Html.EditorFor(m => m.Email, "String", new { Placeholder = "e.g. johndoe@gmail.com" })
+    </div>
+
+    <div class="form-group form-group-icon-left">
+        <i class="fa fa-lock input-icon input-icon-show"></i>
+        <label>Password</label>
+        @*<input name="@Html.NameFor(m => m.Password)" class="form-control" type="password" placeholder="my secret password" />*@
+        @Html.EditorFor(m => m.Password, "Password", new { Placeholder = "my secret password" })
+    </div>
+
+    <div class="form-group form-group-icon-left">
+        <i class="fa fa-lock input-icon input-icon-show"></i>
+        <label>Password</label>
+        @Html.EditorFor(m => m.ConfirmPassword, "Password", new { Placeholder = "Confirm my secret password" })
+    </div>
+
+
+    <input class="btn btn-primary" type="submit" value="Sign up for Traveler" />
+</form>

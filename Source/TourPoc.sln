@@ -1,0 +1,154 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{99FC36D3-D963-4263-BF69-8BD11F801E2B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{8103CD5B-2A92-401C-A854-A31E0FD44DE6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{A5398FDD-2BE7-452F-9808-E5D3C5B58CC3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{29CBA503-E2F8-46ED-A2CF-EA1DFCAA7EEE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TourPoc.Common", "Common\TourPoc.Common.csproj", "{701F322F-AA01-4DDC-90B6-6935981C1E73}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TourPoc.Data", "Data\TourPoc.Data\TourPoc.Data.csproj", "{7C950CDC-9587-4B65-A204-988EFED17948}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TourPoc.Data.Common", "Data\TourPoc.Data.Common\TourPoc.Data.Common.csproj", "{EDFE3C57-EF5B-4636-9ECC-D0BACA6B6379}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TourPoc.Services.Data", "Services\TourPoc.Services.Data\TourPoc.Services.Data.csproj", "{90FE4C4D-122A-406D-8A40-79C561FB8184}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TourPoc.Services.Web", "Services\TourPoc.Services.Web\TourPoc.Services.Web.csproj", "{DEAB17A2-58C1-448C-8A66-D49C3AF7FC6C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{44355537-1E17-40AC-AB6E-FD12DBC1514C}"
+	ProjectSection(SolutionItems) = preProject
+		Libraries\Info.txt = Libraries\Info.txt
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IO.Swagger", "Libraries\IO.Swagger\IO.Swagger.csproj", "{C552CD52-2E2B-4862-9299-ED4299E3E967}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Providers", "Libraries\Providers\Providers.csproj", "{43CA0ED4-E267-49E7-89E5-B5E79F05DC42}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TourPoc.Web", "Web\TourPoc.Web\TourPoc.Web.csproj", "{67CC40FF-4933-4F83-810E-357E6BC8B973}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TourPoc.Web.Infrastructure", "Web\TourPoc.Web.Infrastructure\TourPoc.Web.Infrastructure.csproj", "{6813DC53-5EEE-4507-8604-5301EE51A0D3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Helpers", "Helpers", "{31B1B948-7ADF-4167-8B57-299C434D49EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonHelpers", "CommonHelpers\CommonHelpers.csproj", "{A9E4575C-DDCD-4850-9EB8-4DBF859C9D94}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{AEFAA1F9-3B49-4A40-A46B-75930767A6CF}"
+	ProjectSection(SolutionItems) = preProject
+		Notes.txt = Notes.txt
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{701F322F-AA01-4DDC-90B6-6935981C1E73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{701F322F-AA01-4DDC-90B6-6935981C1E73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{701F322F-AA01-4DDC-90B6-6935981C1E73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{701F322F-AA01-4DDC-90B6-6935981C1E73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C950CDC-9587-4B65-A204-988EFED17948}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C950CDC-9587-4B65-A204-988EFED17948}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C950CDC-9587-4B65-A204-988EFED17948}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C950CDC-9587-4B65-A204-988EFED17948}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDFE3C57-EF5B-4636-9ECC-D0BACA6B6379}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDFE3C57-EF5B-4636-9ECC-D0BACA6B6379}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDFE3C57-EF5B-4636-9ECC-D0BACA6B6379}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDFE3C57-EF5B-4636-9ECC-D0BACA6B6379}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90FE4C4D-122A-406D-8A40-79C561FB8184}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90FE4C4D-122A-406D-8A40-79C561FB8184}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90FE4C4D-122A-406D-8A40-79C561FB8184}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90FE4C4D-122A-406D-8A40-79C561FB8184}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEAB17A2-58C1-448C-8A66-D49C3AF7FC6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEAB17A2-58C1-448C-8A66-D49C3AF7FC6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEAB17A2-58C1-448C-8A66-D49C3AF7FC6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEAB17A2-58C1-448C-8A66-D49C3AF7FC6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C552CD52-2E2B-4862-9299-ED4299E3E967}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C552CD52-2E2B-4862-9299-ED4299E3E967}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C552CD52-2E2B-4862-9299-ED4299E3E967}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C552CD52-2E2B-4862-9299-ED4299E3E967}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43CA0ED4-E267-49E7-89E5-B5E79F05DC42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43CA0ED4-E267-49E7-89E5-B5E79F05DC42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43CA0ED4-E267-49E7-89E5-B5E79F05DC42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43CA0ED4-E267-49E7-89E5-B5E79F05DC42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67CC40FF-4933-4F83-810E-357E6BC8B973}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67CC40FF-4933-4F83-810E-357E6BC8B973}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67CC40FF-4933-4F83-810E-357E6BC8B973}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67CC40FF-4933-4F83-810E-357E6BC8B973}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6813DC53-5EEE-4507-8604-5301EE51A0D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6813DC53-5EEE-4507-8604-5301EE51A0D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6813DC53-5EEE-4507-8604-5301EE51A0D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6813DC53-5EEE-4507-8604-5301EE51A0D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9E4575C-DDCD-4850-9EB8-4DBF859C9D94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9E4575C-DDCD-4850-9EB8-4DBF859C9D94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9E4575C-DDCD-4850-9EB8-4DBF859C9D94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9E4575C-DDCD-4850-9EB8-4DBF859C9D94}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{701F322F-AA01-4DDC-90B6-6935981C1E73} = {29CBA503-E2F8-46ED-A2CF-EA1DFCAA7EEE}
+		{7C950CDC-9587-4B65-A204-988EFED17948} = {8103CD5B-2A92-401C-A854-A31E0FD44DE6}
+		{EDFE3C57-EF5B-4636-9ECC-D0BACA6B6379} = {8103CD5B-2A92-401C-A854-A31E0FD44DE6}
+		{90FE4C4D-122A-406D-8A40-79C561FB8184} = {A5398FDD-2BE7-452F-9808-E5D3C5B58CC3}
+		{DEAB17A2-58C1-448C-8A66-D49C3AF7FC6C} = {A5398FDD-2BE7-452F-9808-E5D3C5B58CC3}
+		{C552CD52-2E2B-4862-9299-ED4299E3E967} = {44355537-1E17-40AC-AB6E-FD12DBC1514C}
+		{43CA0ED4-E267-49E7-89E5-B5E79F05DC42} = {44355537-1E17-40AC-AB6E-FD12DBC1514C}
+		{67CC40FF-4933-4F83-810E-357E6BC8B973} = {99FC36D3-D963-4263-BF69-8BD11F801E2B}
+		{6813DC53-5EEE-4507-8604-5301EE51A0D3} = {99FC36D3-D963-4263-BF69-8BD11F801E2B}
+		{A9E4575C-DDCD-4850-9EB8-4DBF859C9D94} = {31B1B948-7ADF-4167-8B57-299C434D49EE}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 11
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tfs.sergata.net/tfs/2016
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Data\\TourPoc.Data.Common\\TourPoc.Data.Common.csproj
+		SccProjectTopLevelParentUniqueName1 = TourPoc.sln
+		SccProjectName1 = Data/TourPoc.Data.Common
+		SccLocalPath1 = Data\\TourPoc.Data.Common
+		SccProjectUniqueName2 = Data\\TourPoc.Data\\TourPoc.Data.csproj
+		SccProjectTopLevelParentUniqueName2 = TourPoc.sln
+		SccProjectName2 = Data/TourPoc.Data
+		SccLocalPath2 = Data\\TourPoc.Data
+		SccProjectUniqueName3 = Services\\TourPoc.Services.Data\\TourPoc.Services.Data.csproj
+		SccProjectTopLevelParentUniqueName3 = TourPoc.sln
+		SccProjectName3 = Services/TourPoc.Services.Data
+		SccLocalPath3 = Services\\TourPoc.Services.Data
+		SccProjectUniqueName4 = Web\\TourPoc.Web\\TourPoc.Web.csproj
+		SccProjectTopLevelParentUniqueName4 = TourPoc.sln
+		SccProjectName4 = Web/TourPoc.Web
+		SccLocalPath4 = Web\\TourPoc.Web
+		SccProjectUniqueName5 = Common\\TourPoc.Common.csproj
+		SccProjectTopLevelParentUniqueName5 = TourPoc.sln
+		SccProjectName5 = Common
+		SccLocalPath5 = Common
+		SccProjectUniqueName6 = CommonHelpers\\CommonHelpers.csproj
+		SccProjectTopLevelParentUniqueName6 = TourPoc.sln
+		SccProjectName6 = CommonHelpers
+		SccLocalPath6 = CommonHelpers
+		SccProjectUniqueName7 = Libraries\\IO.Swagger\\IO.Swagger.csproj
+		SccProjectTopLevelParentUniqueName7 = TourPoc.sln
+		SccProjectName7 = Libraries/IO.Swagger
+		SccLocalPath7 = Libraries\\IO.Swagger
+		SccProjectUniqueName8 = Libraries\\Providers\\Providers.csproj
+		SccProjectTopLevelParentUniqueName8 = TourPoc.sln
+		SccProjectName8 = Libraries/Providers
+		SccLocalPath8 = Libraries\\Providers
+		SccProjectUniqueName9 = Services\\TourPoc.Services.Web\\TourPoc.Services.Web.csproj
+		SccProjectTopLevelParentUniqueName9 = TourPoc.sln
+		SccProjectName9 = Services/TourPoc.Services.Web
+		SccLocalPath9 = Services\\TourPoc.Services.Web
+		SccProjectUniqueName10 = Web\\TourPoc.Web.Infrastructure\\TourPoc.Web.Infrastructure.csproj
+		SccProjectTopLevelParentUniqueName10 = TourPoc.sln
+		SccProjectName10 = Web/TourPoc.Web.Infrastructure
+		SccLocalPath10 = Web\\TourPoc.Web.Infrastructure
+	EndGlobalSection
+EndGlobal
